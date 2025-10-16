@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Portfolio
+{% endblock %}
+
+{% block main %}
+{% if bought %}
+<header>
+    <div>Bought!</div>
+</header>
+{% endif %}
+<table class="table text-end table-striped">
+    <thead>
+        <tr>
+            <th class=text-start>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for share in wallet %}
+        <tr>
+            <td class=text-start>{{ share["symbol"] }}</td>
+            <td>{{ share["shares"] }}</td>
+            <td>{{ share["price"] | usd}}</td>
+            <td>{{ share["total"] | usd}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan=3 class="fw-bold border-0">Cash</td>
+            <td class=border-0>{{ cash | usd }}</td>
+        </tr>
+        <tr>
+            <td colspan=3 class="fw-bold border-0">Total</td>
+            <td class=border-0>{{ total | usd }}</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+{% endblock %}

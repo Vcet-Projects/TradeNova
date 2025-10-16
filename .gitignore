@@ -1,0 +1,8 @@
+# Exclude __pycache__ directories
+__pycache__/
+
+# Exclude pytest cache directories
+.pytest_cache/
+
+flask_session/
+finance.db
